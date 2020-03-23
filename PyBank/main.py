@@ -2,8 +2,8 @@ import csv
 
 budget_origin=('budget_data.csv')
 
-#lists for financial analysis (NEEDED IN VERSION WITHOUT COMPREHENSION)
-total_months = []       #total number of months included in the dataset   NOT NEEDED
+#lists for financial analysis
+total_months = []       #total number of months included in the dataset
 total_net = 0           #net total amount of "Profit/Losses" over the entire period
 list_profits = []       #list of profit/losses values
 list_changes = []       #list changes in "Profit/Losses" over the entire period
