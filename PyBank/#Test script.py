@@ -20,7 +20,7 @@ with open(budget_data, 'r') as csvfile:
                 print(date)
                 print(profit_losses)
 
-
+#---------------------------------------------------------------------------#
 #THIS WORKS
 with open(budget_origin, 'r') as csvfile:
     csvreader=csv.reader(csvfile, delimiter=',')
@@ -38,3 +38,69 @@ with open(budget_origin, 'r') as csvfile:
     print(profit_losses)
     # net_total = [profit_losses for profit_losses in (total_months[1])]
     # print(f'Total: ${net_total}')
+
+#---------------------------------------------------------------------------#
+    
+with open(budget_origin, 'r') as csvfile:
+    csvreader=csv.reader(csvfile, delimiter=',')
+
+    #find header
+    csv_header=next(csvreader)
+    #print(f'CSV Header: {csv_header}')
+    
+    for row in csvreader:
+        date=row[0]
+        total_months.append(date)
+      
+        profit_losses=int(row[1])
+        net_total += profit_losses
+
+    print(f'Total Months: {int(len(total_months))}')
+    print(f'Total: ${int(net_total)}')
+
+#---------------------------------------------------------------------------#
+#MAX&MIN online
+# function to find minimum and maximum position in list 
+def min_and_max(a, n): 
+  
+    # inbuilt function to find the position of minimum  
+    min_index = a.index(min(a)) 
+      
+    # inbuilt function to find the position of maximum  
+    max_index = a.index(max(a))  
+      
+    # printing the position  
+    print("The maximum is at position", maxpos + 1)
+    print("The minimum is at position", minpos + 1)
+      
+#---------------------------------------------------------------------------#      
+# driver code 
+a = [3, 4, 1, 3, 4, 5]  
+minimum(a, len(a)) 
+
+
+        #find max
+        for greatest_increase in csvreader:
+            if greatest_increase > profit_losses:
+                print(greatest_increase)
+        greatest_decrease = min(enumerate(profit_losses))
+
+
+#---------------------------------------------------------------------------#
+#WORK IN PROGRESS FOR MAX AS LIST COMPREHENSION   
+    max_profit_index= [profit for profit in enumerate(list_profit_losses) if profit == max_profit]
+    print(max_profit_index)
+
+#FAST WAY TO GET MAX  
+#from this found online: a.index(max(a))  
+    max_idx= list_profit_losses.index(max(list_profit_losses))
+    print(total_months[max_idx])
+
+
+#---------------------------------------------------------------------------#
+#FIND MAX WORKS!!!  
+   max_profit = max(list_profit_losses)
+    for index,profit in enumerate(list_profit_losses):
+        if profit == max_profit:
+            print(index,profit)
+            print(f'Greatest Increase: {total_months[index]} (${max_profit})')
