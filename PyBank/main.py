@@ -1,3 +1,5 @@
+#STRING FOR PyBANK CHALLENGE
+
 import csv
 
 budget_origin=('budget_data.csv')
@@ -45,26 +47,24 @@ with open(budget_origin, 'r', newline='\n') as csvfile:
     min_profit = min(list_changes)
     min_index = list_changes.index(min(list_changes)) +1
     
-    #PRINT RESULTS ON TERMINAL
-    print("-----------------------------------")
-    print("Financial Analysis")
-    print("-----------------------------------")
-    print(f'Total Months: {int(len(total_months))}')
-    print(f'Total: ${int(total_net)}')
-    print(f'Average Change: {avg_change}')
-    print(f'Greatest Increase: {total_months[max_index]} (${max_profit})')
-    print(f'Greatest Decrease: {total_months[min_index]} (${min_profit})')
-
-#CREATING OUTPUT FILE
+    #DEFINE RESULTS "BLOCK"
+    s= ""
+    s+="Financial Analysis\n"
+    s+="-----------------------------------\n"
+    s+=f'Total Months: {int(len(total_months))}\n'
+    s+=f'Total: ${int(total_net)}\n'
+    s+=f'Average Change: {avg_change}\n'
+    s+=f'Greatest Increase: {total_months[max_index]} (${max_profit})\n'
+    s+=f'Greatest Decrease: {total_months[min_index]} (${min_profit})\n'
+        
+    #PRINT RESULTS TO TERMINAL
+    print(s)
+    
+#GENERATE OUTPUT FILE
 #output file path
 analysis=('Financial_Analysis.txt')
 
 with open(analysis, 'w', newline='\n') as text:
-    text.write("Financial Analysis\n")
-    text.write("------------------\n")
-    text.write(f'Total Months: {int(len(total_months))}\n')
-    text.write(f'Total: ${int(total_net)}\n')
-    text.write(f'Average Change: {avg_change}\n')
-    text.write(f'Greatest Increase: {total_months[max_index]} (${max_profit})\n')
-    text.write(f'Greatest Decrease: {total_months[min_index]} (${min_profit})')
+    text.write(s)
+
 

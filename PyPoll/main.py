@@ -1,12 +1,16 @@
+#STRING FOR PyPOLL CHALLENGE
+
 import csv
 
-election_data=('election_data_file.csv')
+election_data=('election_data.csv')
+
 
 #lists for financial analysis 
 total_votes = 0         #total number of votes cast
 list_candidates = []    #list of candidate names, with repetition of names
 candidate_counter = {}  #dictionary for number of votes per candidate
-winner="No one"
+candidate_info = {}     #dictionary for info of each candidate
+
 
 with open(election_data, 'r') as csvfile:
     csvreader=csv.reader(csvfile, delimiter=',')
@@ -30,37 +34,40 @@ with open(election_data, 'r') as csvfile:
         else:
             candidate_counter[candidate] += 1
     
+  
     #extrapolate winner
-    max_vote=max(candidate_counter.values())
+    max_vote = max(candidate_counter.values())
     for candidate in candidate_counter:
         if candidate_counter[candidate] == max_vote:
             winner= candidate
 
 
-    #PRINT TO TERMINAL
-    print("-----------------------------------")
-    print("Election Results")
-    print("-----------------------------------")
-    print(f'Total votes: {total_votes}')
-    print("-----------------------------------")
+    #DEFINE RESULTS "BLOCK"
+    s=""
+    s+="Election Results\n"
+    s+="-----------------------------------\n"
+    s+=f'Total votes: {total_votes}\n'
+    s+="-----------------------------------\n"
     for i in candidate_counter:
-        print(f'{i}: {float(round(candidate_counter[i]/total_votes*100,4))}% ({candidate_counter[i]})')
-    print("-----------------------------------")
-    print(f'Winner: {winner}')
+        vote = candidate_counter[i]
+        perc = round(vote/total_votes*100,4)
+        s += f"{i}: {perc}% ({vote})\n"
+    s+="-----------------------------------\n"
+    s+=f'Winner: {winner}\n'
+    
+    #PRINT RESULTS TO TERMINAL
+    print(s)
+        
+    
 
 #GENERATE OUTPUT FILE
+#output file path
 results=('Election_Results.txt')
 
 with open(results, 'w', newline='\n') as text:
 
-    text.write("Election Results\n")
-    text.write("-----------------------------------\n")
-    text.write(f'Total votes: {total_votes}\n')
-    text.write("-----------------------------------\n")
-    for i in candidate_counter:
-        text.write(f'{i}: {float(round(candidate_counter[i]/total_votes*100,4))}% ({candidate_counter[i]})\n')
-    text.write("-----------------------------------\n")
-    text.write(f'Winner: {winner}')
+    text.write(s)
+
 
 
 
