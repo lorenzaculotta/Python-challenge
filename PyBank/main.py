@@ -53,9 +53,9 @@ with open(budget_origin, 'r', newline='\n') as csvfile:
     s+="-----------------------------------\n"
     s+=f'Total Months: {int(len(total_months))}\n'
     s+=f'Total: ${int(total_net)}\n'
-    s+=f'Average Change: {avg_change}\n'
-    s+=f'Greatest Increase: {total_months[max_index]} (${max_profit})\n'
-    s+=f'Greatest Decrease: {total_months[min_index]} (${min_profit})\n'
+    s+=f'Average Change: ${avg_change}\n'
+    s+=f'Greatest Increase in Profits: {total_months[max_index]} (${max_profit})\n'
+    s+=f'Greatest Decrease in Profits: {total_months[min_index]} (${min_profit})\n'
         
     #PRINT RESULTS TO TERMINAL
     print(s)
