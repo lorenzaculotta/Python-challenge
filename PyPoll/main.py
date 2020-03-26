@@ -16,8 +16,7 @@ with open(election_data, 'r') as csvfile:
     csvreader=csv.reader(csvfile, delimiter=',')
     
     csv_header=next(csvreader)  
-    #print(csv_header)
-
+    
     for row in csvreader:
         
         #calculate total number of votes
